@@ -25,7 +25,7 @@ struct PlayerView: View {
         HStack {
             Text(player.name)
                 .frame(width:60)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+//                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
             HStack{
                 Text("\(player.buyinCount)")
                 Button() {
@@ -41,11 +41,11 @@ struct PlayerView: View {
                     Image(systemName: "minus")
                 }.buttonStyle(.borderless)
             }.frame(width:80)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+//                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 .padding()
            
             TextField("", value: $chipCount, format: .number)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                .border(Color.white)
                 .frame(width:60)
                 .multilineTextAlignment(.center)
                 .onSubmit {
@@ -56,12 +56,12 @@ struct PlayerView: View {
                 Text("\(player.totalCount, specifier:"%.2f")")
                     .foregroundStyle(totalColor)
                     .frame(width:60)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+//                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                     .padding()
             } else {
                 Text("\(0)")
                     .frame(width:60)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+//                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                     .padding()
                     
             }

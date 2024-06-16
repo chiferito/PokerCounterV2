@@ -90,12 +90,14 @@ struct ContentView: View {
                         }
                     }
                     let numbers = players.map( {$0.totalCount }).reduce(0, +)
-                    Text("Sum: \(numbers,specifier:"%.2f")")
+                    HStack {
+                        Text("Sum(should be 0):").bold()
+                        Spacer()
+                        Text("\(numbers,specifier:"%.2f")")
+                    }.padding(.trailing,45)
+                    
                 }
             }
-            
-        } .safeAreaInset(edge: .bottom) {
-
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:20) {
                 Text("New player")
                     .font(.headline)
@@ -114,10 +116,12 @@ struct ContentView: View {
                     }
                 }.padding()
             }
-        }.task {
-            context.insert(Player(name:"Eric"))
-            context.insert(Player(name:"Tony"))
         }
+//        .ignoresSafeArea(.keyboard)
+//        .task {
+//            context.insert(Player(name:"Eric"))
+//            context.insert(Player(name:"Tony"))
+//        }
     }
 }
 
