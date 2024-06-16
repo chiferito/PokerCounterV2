@@ -38,6 +38,7 @@ struct ContentView: View {
                             .onSubmit {
                                 GameInfo.shared.buyinValue = ContentView.newBuyin
                             }
+                                .ignoresSafeArea(.keyboard)
                     }
                 }.padding(.trailing,50)
                 ZStack{
@@ -55,6 +56,7 @@ struct ContentView: View {
                             .onSubmit {
                                 GameInfo.shared.bountyValue = ContentView.newBounty
                             }
+                            .ignoresSafeArea(.keyboard)
                     }
                 }
             }
@@ -95,27 +97,27 @@ struct ContentView: View {
                         Spacer()
                         Text("\(numbers,specifier:"%.2f")")
                     }.padding(.trailing,45)
-                    
+                }
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:20) {
+                    Text("New player")
+                        .font(.headline)
+                    HStack {
+                        TextField("Name",text:$newName)
+                            .textFieldStyle(.roundedBorder)
+                            .focused($nameIsFocused)
+                        Button("Add") {
+                            if newName != "" {
+                                let newPlayer = Player(name: newName)
+                                context.insert(newPlayer)
+                                newName=""
+                                
+                            }
+                            nameIsFocused = false
+                        }
+                    }.padding()
                 }
             }
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing:20) {
-                Text("New player")
-                    .font(.headline)
-                HStack {
-                    TextField("Name",text:$newName)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($nameIsFocused)
-                    Button("Add") {
-                        if newName != "" {
-                            let newPlayer = Player(name: newName)
-                            context.insert(newPlayer)
-                            newName=""
-                            
-                        }
-                        nameIsFocused = false
-                    }
-                }.padding()
-            }
+
         }
 //        .ignoresSafeArea(.keyboard)
 //        .task {
